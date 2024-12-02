@@ -34,8 +34,7 @@ $(document).ready(function () {
   
             let workdetail;
             if (!isWeekend) {
-              workdetail =
-                "Encoded drugs and medicine in the PhilHealth E-Claims system, transcribed doctor's orders, and processed patient discharge with CF4 generation to XML.";
+              workdetail = "";
             } else {
               workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>${dayOfWeek.toUpperCase()}</span>`;
             }
@@ -43,37 +42,16 @@ $(document).ready(function () {
             let dateCell = $("<td contenteditable='true'></td>").text(daylog);
             let workCell = $("<td class='text-center' contenteditable='true'></td>").html(workdetail);
             let encodedValue = parseInt(data[i].encoded) || 0;
-  
-
-            if (encodedValue == 5) {
-              encodedValue = 10;
-            }
-
-            if (encodedValue == 0) {
-              encodedValue = 10;
-              if (isWeekend) {
-                encodedValue = 0;
-              }
-            }
-
-            if (encodedValue == 9) {
-              encodedValue = 10;
-            }
-
-            if (encodedValue == 8) {
-              encodedValue = 10;
-            }
-  
             let qtyCell = $("<td class='text-center text-white' contenteditable='true'></td>").text(encodedValue);
   
             if (encodedValue === 0) {
               if (!isWeekend) {
-                qtyCell.addClass("bg-danger");
+                qtyCell.addClass("bg-success");
               } else {
                 qtyCell.addClass("bg-success");
               }
             } else if (encodedValue < 10) {
-              qtyCell.addClass("bg-warning");
+              qtyCell.addClass("bg-success");
             } else {
               qtyCell.addClass("bg-success");
             }
