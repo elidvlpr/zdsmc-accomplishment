@@ -37,9 +37,9 @@ $query = "SELECT
             a.h_fullname
         FROM 
             (SELECT 
-                DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 day' * (n - 1) AS day
+                DATE '2025-1-01' + INTERVAL '1 day' * (n - 1) AS day
             FROM 
-                (SELECT generate_series(1, CAST(DATE_PART('days', DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month - 1 day') AS INTEGER)) AS n) AS numbers) AS d
+                (SELECT generate_series(1, 31) AS n) AS numbers) AS d
         LEFT JOIN 
             his_tracking_logs h ON 
                 h.log_date::date = d.day

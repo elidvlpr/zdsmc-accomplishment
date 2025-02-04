@@ -6,8 +6,9 @@ $(document).ready(function () {
 
   const philippineHolidays = [
     { date: "2025-01-01", name: "New Year's Day" },
+    { date: "2025-01-19", name: "Pasalamat Festival" },
+    { date: "2025-01-20", name: "Pasalamat Festival" },
     { date: "2025-01-23", name: "First Philippine Republic Day" },
-    { date: "2025-01-27", name: "Lailatul Isra Wal Mi Raj (Tentative Date)" },
     { date: "2025-01-29", name: "Lunar New Year's Day" },
     { date: "2025-02-25", name: "People Power Anniversary" },
     { date: "2025-03-01", name: "Ramadan Start (Tentative Date)" },
@@ -32,7 +33,7 @@ $(document).ready(function () {
   ];
 
   function getHoliday(date) {
-    let formattedDate = date.toISOString().split("T")[0];
+    let formattedDate = date.toLocaleDateString("en-CA");
     return philippineHolidays.find((holiday) => holiday.date === formattedDate);
   }
 
@@ -80,8 +81,8 @@ $(document).ready(function () {
               workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>HOLIDAY [ ${holidayName.toUpperCase()} ]</span>`;
             }
 
-            let dateCell = $("<td contenteditable='true'></td>").text(
-              daylog + " 8:00 AM - 5:00 PM"
+            let dateCell = $("<td contenteditable='true'></td>").html(
+              daylog + "<br>8:00 AM - 5:00 PM"
             );
             let workCell = $(
               "<td class='text-center' contenteditable='true'></td>"
@@ -99,6 +100,10 @@ $(document).ready(function () {
               }
             }
 
+            if (isHolidayToday) {
+              encodedValue = 0;
+            }
+
             if (encodedValue == 9) {
               encodedValue = 10;
             }
@@ -108,20 +113,9 @@ $(document).ready(function () {
             }
 
             let qtyCell = $(
-              "<td class='text-center text-white' contenteditable='true'></td>"
+              "<td class='text-center fs-6' contenteditable='true'></td>"
             ).text(encodedValue);
 
-            if (encodedValue === 0) {
-              if (!isWeekend) {
-                qtyCell.addClass("bg-danger");
-              } else {
-                qtyCell.addClass("bg-success");
-              }
-            } else if (encodedValue < 10) {
-              qtyCell.addClass("bg-warning");
-            } else {
-              qtyCell.addClass("bg-success");
-            }
 
             row.append(dateCell, workCell, qtyCell);
             tableBody.append(row);
