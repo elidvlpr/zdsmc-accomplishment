@@ -28,7 +28,7 @@
         <div class="row mt-0 mb-0">
             <div class="col">
                 <p class="text-center mt-2 mb-0" style="font-family: Aleo, serif;font-size: 15px;"><strong>ACCOMPLISHMENT REPORT</strong></p>
-                <p class="text-center mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;"><span style="color: rgb(0, 0, 0);">For the Month of December</span></p>
+                <p class="text-center mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;"><span style="color: rgb(0, 0, 0);">For the Month of February</span></p>
                 <p class="text-start mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;">Area Assigned: Philhealth Billing and Claims (Data Center)</p>
             </div>
         </div>
