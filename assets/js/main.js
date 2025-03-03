@@ -9,7 +9,6 @@ $(document).ready(function () {
     { date: "2025-01-19", name: "Pasalamat Festival" },
     { date: "2025-01-20", name: "Pasalamat Festival" },
     { date: "2025-01-23", name: "First Philippine Republic Day" },
-    { date: "2025-01-27", name: "Lailatul Isra Wal Mi Raj (Tentative Date)" },
     { date: "2025-01-29", name: "Lunar New Year's Day" },
     { date: "2025-02-25", name: "People Power Anniversary" },
     { date: "2025-03-01", name: "Ramadan Start (Tentative Date)" },
