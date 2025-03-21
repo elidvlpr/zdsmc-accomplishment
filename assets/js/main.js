@@ -44,137 +44,99 @@ $(document).ready(function () {
     var totalEncoded = 0;
 
     var tableRequest = $.post(
-      "assets/php/search-employee-id.php",
-      { employee_id: employee_id },
-      function (data) {
-        tableBody.empty();
-        if (data.length > 0) {
-          for (let i = 0; i < data.length; i++) {
-            let row = $("<tr height='30'></tr>");
+        "assets/php/search-employee-id.php",
+        { employee_id: employee_id },
+        function (data) {
+            tableBody.empty();
+            if (data.length > 0) {
+                for (let i = 0; i < data.length; i++) {
+                    let row = $("<tr height='30'></tr>");
 
-            let logDate = new Date(data[i].log_date);
-            let formattedDate = logDate.toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "2-digit",
-            });
-            let dayOfWeek = logDate.toLocaleDateString("en-US", {
-              weekday: "long",
-            });
-            let isWeekend = dayOfWeek === "Saturday" || dayOfWeek === "Sunday";
+                    let logDate = new Date(data[i].log_date);
+                    let formattedDate = logDate.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "numeric",
+                        day: "2-digit",
+                    });
+                    let dayOfWeek = logDate.toLocaleDateString("en-US", {
+                        weekday: "long",
+                    });
 
-            let holiday = getHoliday(logDate);
-            let isHolidayToday = holiday ? true : false;
-            let holidayName = holiday ? holiday.name : "";
+                    let isWeekend = dayOfWeek === "Saturday" || dayOfWeek === "Sunday";
+                    let holiday = getHoliday(logDate);
+                    let isHolidayToday = holiday ? true : false;
+                    let holidayName = holiday ? holiday.name : "";
 
-            let daylog = `${formattedDate}`;
+                    let workdetail;
+                    if (!isWeekend) {
+                        workdetail =
+                            "Encoded drugs and medicine in the PhilHealth E-Claims system, transcribed doctor's orders, and processed patient discharge with CF4 generation to XML.";
+                    } else {
+                        workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>${dayOfWeek.toUpperCase()}</span>`;
+                    }
 
-            let workdetail;
-            if (!isWeekend) {
-              workdetail =
-                "Encoded drugs and medicine in the PhilHealth E-Claims system, transcribed doctor's orders, and processed patient discharge with CF4 generation to XML.";
+                    if (isHolidayToday) {
+                        workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>HOLIDAY [ ${holidayName.toUpperCase()} ]</span>`;
+                    }
+
+                    let dateCell = $("<td contenteditable='true' class='text-center fs-6'></td>").text(formattedDate);
+                    let timeCell = $("<td contenteditable='true' class='text-center fs-6'></td>").text("8:00 AM - 5:00 PM");
+                    let workCell = $("<td contenteditable='true' class='text-center fs-6'></td>").html(workdetail);
+                    
+                    let encodedValue = parseInt(data[i].encoded) || 0;
+                    if ([5, 9, 8].includes(encodedValue)) encodedValue = 13;
+                    if (encodedValue == 0) encodedValue = isWeekend || isHolidayToday ? 0 : 13;
+
+                    let qtyCell = $("<td class='text-center fs-6' contenteditable='true'></td>").text(encodedValue);
+
+                    row.append(dateCell, timeCell, workCell, qtyCell);
+                    tableBody.append(row);
+                    totalEncoded += encodedValue;
+
+                    qtyCell.on("input", function () {
+                        let newValue = parseInt($(this).text()) || 0;
+                        if (newValue !== encodedValue) {
+                            totalEncoded = totalEncoded - encodedValue + newValue;
+                            encodedValue = newValue;
+                            updateTotal();
+                        }
+                    });
+
+                    workCell.on("blur", function () {
+                        // Logic to save updated work details can be added here
+                    });
+                }
             } else {
-              workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>${dayOfWeek.toUpperCase()}</span>`;
+                let noDataRow = $("<tr></tr>");
+                let noDataCell = $("<td colspan='4' class='text-center'></td>").text("No data available.");
+                noDataRow.append(noDataCell);
+                tableBody.append(noDataRow);
             }
-
-            if (isHolidayToday) {
-              workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>HOLIDAY [ ${holidayName.toUpperCase()} ]</span>`;
-            }
-
-            let dateCell = $("<td contenteditable='true'></td>").html(
-              daylog + "<br>8:00 AM - 5:00 PM"
-            );
-            let workCell = $(
-              "<td class='text-center' contenteditable='true'></td>"
-            ).html(workdetail);
-            let encodedValue = parseInt(data[i].encoded) || 0;
-
-            if (encodedValue == 5) {
-              encodedValue = 13;
-            }
-
-            if (encodedValue == 0) {
-              encodedValue = 13;
-              if (isWeekend) {
-                encodedValue = 0;
-              }
-            }
-
-            if (isHolidayToday) {
-              encodedValue = 0;
-            }
-
-            if (encodedValue == 9) {
-              encodedValue = 13;
-            }
-
-            if (encodedValue == 8) {
-              encodedValue = 13;
-            }
-
-            let qtyCell = $(
-              "<td class='text-center fs-6' contenteditable='true'></td>"
-            ).text(encodedValue);
-
-
-            row.append(dateCell, workCell, qtyCell);
-            tableBody.append(row);
-
-            totalEncoded += encodedValue;
-
-            // Event listener to update totalEncoded when the user edits a cell
-            qtyCell.on("input", function () {
-              let newValue = parseInt($(this).text()) || 0;
-              if (newValue !== encodedValue) {
-                totalEncoded = totalEncoded - encodedValue + newValue;
-                encodedValue = newValue;
-                updateTotal();
-              }
-            });
-
-            // Event listener to handle work detail edits
-            workCell.on("blur", function () {
-              // Logic to save the updated work details can be added here
-            });
-          }
-        } else {
-          let noDataRow = $("<tr></tr>");
-          let noDataCell = $("<td colspan='3' class='text-center'></td>").text(
-            "No data available."
-          );
-          noDataRow.append(noDataCell);
-          tableBody.append(noDataRow);
         }
-      }
     );
 
     var fullnameRequest = $.post(
-      "assets/php/get-fullname.php",
-      { employee_id: employee_id },
-      function (data) {
-        spanElement.textContent = data[0].h_fullname;
-      }
+        "assets/php/get-fullname.php",
+        { employee_id: employee_id },
+        function (data) {
+            spanElement.textContent = data[0].h_fullname;
+        }
     );
 
     $.when(tableRequest, fullnameRequest).done(function () {
-      tableFooter.empty();
-      let footerRow = $("<tr></tr>");
-      let footerCell = $(
-        "<td colspan='2' class='text-right' style='background: rgb(251,220,220); font-weight: bold;'></td>"
-      ).text("Total Encoded:");
-      let totalCell = $(
-        "<td class='text-center' style='background: rgb(251,220,220); font-weight: bold;'></td>"
-      ).text(totalEncoded);
-      footerRow.append(footerCell);
-      footerRow.append(totalCell);
-      tableFooter.append(footerRow);
+        tableFooter.empty();
+        let footerRow = $("<tr></tr>");
+        let footerCell = $("<td colspan='3' class='text-right' style='background: rgb(251,220,220); font-weight: bold;'></td>").text("Total Encoded:");
+        let totalCell = $("<td class='text-center' style='background: rgb(251,220,220); font-weight: bold;'></td>").text(totalEncoded);
+        footerRow.append(footerCell, totalCell);
+        tableFooter.append(footerRow);
 
-      myModal.hide();
+        myModal.hide();
     });
 
-    // Function to update the total encoded value
     function updateTotal() {
-      tableFooter.find("td:last-child").text(totalEncoded);
+        tableFooter.find("td:last-child").text(totalEncoded);
     }
-  });
+});
+
 });

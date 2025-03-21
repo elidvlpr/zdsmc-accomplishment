@@ -28,7 +28,7 @@
         <div class="row mt-0 mb-0">
             <div class="col">
                 <p class="text-center mt-2 mb-0" style="font-family: Aleo, serif;font-size: 15px;"><strong>ACCOMPLISHMENT REPORT</strong></p>
-                <p class="text-center mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;"><span style="color: rgb(0, 0, 0);">For the Month of January</span></p>
+                <p class="text-center mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;"><span style="color: rgb(0, 0, 0);">For the Month of February</span></p>
                 <p class="text-start mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;">Area Assigned: Management Information System (Data Encoder)</p>
             </div>
         </div>
@@ -38,9 +38,10 @@
             <table class="table table-sm table-bordered" id="dataTable">
                 <thead>
                     <tr>
-                        <th style="background: rgb(251,220,220);">Date</th>
-                        <th class="text-center" style="background: rgb(251,220,220);">WORK ACCOMPLISHMENT</th>
-                        <th class="text-center" style="background: rgb(251,220,220);">Quantity</th>
+                        <th class="text-center fs-6" style="background: rgb(251,220,220);">DATE FEBRUARY</th>
+                        <th class="text-center fs-6" style="background: rgb(251,220,220);">TIME</th>
+                        <th class="text-center fs-6" style="background: rgb(251,220,220);">WORK ACCOMPLISHMENT</th>
+                        <th class="text-center fs-6" style="background: rgb(251,220,220);">QUANTITY</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,8 +49,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="2" class="text-right" style="background: rgb(251,220,220); font-weight: bold;">Total Encoded:</td>
-                        <td class="text-center" style="background: rgb(251,220,220); font-weight: bold;">0</td>
+                        <td colspan="2" class="text-right fs-6" style="background: rgb(251,220,220); font-weight: bold;">Total Encoded:</td>
+                        <td class="text-center fs-6" style="background: rgb(251,220,220); font-weight: bold;">0</td>
                     </tr>
                 </tfoot>
             </table>
