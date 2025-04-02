@@ -28,7 +28,7 @@
         <div class="row mt-0 mb-0">
             <div class="col">
                 <p class="text-center mt-2 mb-0" style="font-family: Aleo, serif;font-size: 15px;"><strong>ACCOMPLISHMENT REPORT</strong></p>
-                <p class="text-center mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;"><span style="color: rgb(0, 0, 0);">For the Month of February</span></p>
+                <p class="text-center mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;"><span style="color: rgb(0, 0, 0);">For the Month of March</span></p>
                 <p class="text-start mt-0 mb-0" style="font-family: Aleo, serif;font-size: 10px;">Area Assigned: Management Information System (Data Encoder)</p>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <table class="table table-sm table-bordered" id="dataTable">
                 <thead>
                     <tr>
-                        <th class="text-center fs-6" style="background: rgb(251,220,220);">DATE FEBRUARY</th>
+                        <th class="text-center fs-6" style="background: rgb(251,220,220);">DATE MARCH</th>
                         <th class="text-center fs-6" style="background: rgb(251,220,220);">TIME</th>
                         <th class="text-center fs-6" style="background: rgb(251,220,220);">WORK ACCOMPLISHMENT</th>
                         <th class="text-center fs-6" style="background: rgb(251,220,220);">QUANTITY</th>
