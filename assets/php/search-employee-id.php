@@ -37,7 +37,7 @@ $query = "SELECT
             a.h_fullname
         FROM 
             (SELECT 
-                DATE '2025-3-01' + INTERVAL '1 day' * (n - 1) AS day
+                DATE '2025-4-01' + INTERVAL '1 day' * (n - 1) AS day
             FROM 
                 (SELECT generate_series(1, 31) AS n) AS numbers) AS d
         LEFT JOIN 
