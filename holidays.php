@@ -8,8 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Dashboard</title>
-    <meta name="description" content="ZDSMC - ACCOMPLISHMENT">
-    <link rel="stylesheet" href="assets/css/Abril%20Fatface.css">
+    <meta name="description" content="JAIL ON DUTY ASSIGNMENT">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/Nunito.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -17,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
     <link rel="stylesheet" href="assets/css/Hero-Clean-images.css">
     <link rel="stylesheet" href="assets/css/Navbar-Centered-Links-icons.css">
+    <link rel="shortcut icon" href="assets/img/avatars/avatar1.jpeg" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -35,8 +35,8 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="record.php"><i class="fas fa-book"></i><span>Record</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="absence_holiday.php"><i class="fas fa-list"></i><span>Absence/Holidays</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="record.php"><i class="fas fa-book"></i><span>Record</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="holidays.php"><i class="fas fa-list"></i><span>Absence/Holidays</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="activity-logs.php"><i class="fas fa-table"></i><span>Activity Logs</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -56,7 +56,7 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Administrator</span><img class="border rounded-circle img-profile" src="assets/img/avatar.png"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Administrator</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="assets/php/sign-out.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
@@ -67,28 +67,7 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Monthly Accomplishment Submission</h3>
-                    </div>
-                    <div class="card shadow">
-                        <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">All Employees Info</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0 table-bordered" id="dataTable">
-                                    <thead style="font-family: poppins, sans-serif";>
-                                        <tr style="font-family: poppins, sans-serif";>
-                                            <th style="font-family: poppins, sans-serif">EMPLOYEE ID</th>
-                                            <th style="font-family: poppins, sans-serif">FULLNAME</th>
-                                            <th style="font-family: poppins, sans-serif">DEPARTMENT</th>
-                                            <th style="font-family: poppins, sans-serif">ACTION</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <h3 class="text-dark mb-0">Manage Holiday & Absence</h3>
                     </div>
                 </div>
             </div>
@@ -103,9 +82,9 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
     <script src="assets/js/sweetalert2.min.js"></script>
-    <script src="assets/js/theme.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/record/record.js"></script>
+    <script src="assets/js/admin-amenities.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>
