@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Absents</title>
+    <title>Dashboard</title>
     <meta name="description" content="JAIL ON DUTY ASSIGNMENT">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/Nunito.css">
@@ -34,9 +34,9 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="holidays.php"><i class="fas fa-list"></i><span>Holidays</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="absents.php"><i class="fas fa-users"></i><span>Absents</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="record.php"><i class="fas fa-book"></i><span>Record</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="holidays.php"><i class="fas fa-list"></i><span>Absence/Holidays</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="activity-logs.php"><i class="fas fa-table"></i><span>Activity Logs</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -67,22 +67,7 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Dashboard</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card shadow border-left-primary py-2">
-                                <div class="card-body">
-                                    <div class="row g-0 align-items-center">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>TOTAL OFFICERS</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span><?//= get_officer_count() ?></span></div>
-                                        </div>
-                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 class="text-dark mb-0">Manage Holiday & Absence</h3>
                     </div>
                 </div>
             </div>

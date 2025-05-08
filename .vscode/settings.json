@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "192.168.20.103",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "ZDSMC INTRANET",
+            "database": "zdsmc_intranet",
+            "username": "root",
+            "password": ""
+        }
+    ]
+}

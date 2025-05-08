@@ -8,7 +8,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Dashboard</title>
-    <meta name="description" content="JAIL ON DUTY ASSIGNMENT">
+    <meta name="description" content="ZDSMC - ACCOMPLISHMENT">
+    <link rel="stylesheet" href="assets/css/Abril%20Fatface.css">
+    <link rel="stylesheet" href="assets/css/Aleo.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/Nunito.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -35,14 +37,14 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="holidays.php"><i class="fas fa-list"></i><span>Holidays</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="absents.php"><i class="fas fa-users"></i><span>Absents</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="record.php"><i class="fas fa-book"></i><span>Record</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="absence_holiday.php"><i class="fas fa-list"></i><span>Absence/Holidays</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="activity-logs.php"><i class="fas fa-table"></i><span>Activity Logs</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
-        <div class="d-flex flex-column" id="content-wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">   
             <div id="content">
                 <nav class="navbar navbar-expand bg-white shadow mb-4 topbar">
                     <div class="container-fluid"><div class="text-md-start fw-bold fs-4 text-primary">ZDSMC - ACCOMPLISHMENT</div><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
