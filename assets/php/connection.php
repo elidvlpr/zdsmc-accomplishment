@@ -42,16 +42,23 @@ try {
      $db->exec($query);
      $db->exec("USE $database");
  
-     $db->exec("CREATE TABLE IF NOT EXISTS `zdsmc_employees` (
-             `emp_id` VARCHAR(20) PRIMARY KEY,
-             `fullname` VARCHAR(20) NOT NULL,
-             `password` VARCHAR(255),
-             `emp_status` VARCHAR(255) DEFAULT 'ACTIVE' ,
-             `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-             `last_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+     // $db->exec("CREATE TABLE IF NOT EXISTS `zdsmc_employees` (
+     //         `emp_id` VARCHAR(20) PRIMARY KEY,
+     //         `fullname` VARCHAR(20) NOT NULL,
+     //         `password` VARCHAR(255),
+     //         `emp_status` VARCHAR(255) DEFAULT 'ACTIVE' ,
+     //         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+     //         `last_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+     //     );
+     // ");
+     
+     $db->exec("CREATE TABLE IF NOT EXISTS `holidays` (
+             `id` VARCHAR(20) PRIMARY KEY,
+             `name` VARCHAR(20) NOT NULL,
+             `date` da,
          );
      ");
-     
+
      $db->beginTransaction();
      $db->commit();
  

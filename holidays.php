@@ -36,8 +36,8 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="record.php"><i class="fas fa-book"></i><span>Record</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="absence.php"><i class="fas fa-list"></i><span>Absences</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="holidays.php"><i class="fas fa-table"></i><span>Holidays</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="absence.php"><i class="fas fa-list"></i><span>Absences</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="holidays.php"><i class="fas fa-table"></i><span>Holidays</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -67,7 +67,27 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Manage Holiday & Absence</h3>
+                        <h3 class="text-dark mb-0">Manage Holidays</h3><a class="btn btn-primary btn-sm" role="button" href="#" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Add Holiday</a>
+                    </div>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">All Holidays</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0 table-bordered" id="dataTable">
+                                    <thead style="font-family: poppins, sans-serif";>
+                                        <tr style="font-family: poppins, sans-serif";>
+                                            <th style="font-family: poppins, sans-serif">HOLIDAY</th>
+                                            <th style="font-family: poppins, sans-serif">DATE</th>
+                                            <th style="font-family: poppins, sans-serif">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,6 +97,24 @@
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <div class="modal fade" role="dialog" tabindex="-1" id="add">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Holiday</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Here you can add new holidays.</p>
+                    <form id="add-form" method="post" action="assets/php/addholiday.php">
+                        <div class="form-floating mb-3"><input class="form-control" name="name" type="text"><label class="form-label" id="floating-label-2" for="floatinginput">Holiday</label></div>
+                        <div class="form-floating mb-3"><input class="form-control" name="date" type="date"><label class="form-label" id="floating-label-2" for="floatinginput">Select Holiday Date</label></div>
+                        <button class="btn btn-primary btn-sm w-100" role="button" type="submit" data-bs-dismiss="modal"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Save</button>
+                    </form>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

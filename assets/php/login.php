@@ -1,7 +1,7 @@
 <?php
 // Hash'J Programming - hashJProgramming (Joshua Ambalong)
 
-require_once 'connection.php';
+require_once 'connection_intra.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
