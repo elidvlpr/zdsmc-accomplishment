@@ -36,8 +36,8 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="record.php"><i class="fas fa-book"></i><span>Record</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="absence_holiday.php"><i class="fas fa-list"></i><span>Absence/Holidays</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="activity-logs.php"><i class="fas fa-table"></i><span>Activity Logs</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="absence.php"><i class="fas fa-list"></i><span>Absences</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="holidays.php"><i class="fas fa-table"></i><span>Holidays</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
