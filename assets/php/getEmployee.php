@@ -5,7 +5,7 @@ $sql_details = array(
     'user' => $username,
     'pass' => $password,
     'db'   => $database,
-    'host' => $host
+    'host' => $host 
 );
 
 $table = 'zdsmc_employees';

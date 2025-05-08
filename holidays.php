@@ -10,13 +10,11 @@
     <title>Dashboard</title>
     <meta name="description" content="JAIL ON DUTY ASSIGNMENT">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Nunito.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/datatables.min.css">
     <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
     <link rel="stylesheet" href="assets/css/Hero-Clean-images.css">
     <link rel="stylesheet" href="assets/css/Navbar-Centered-Links-icons.css">
-    <link rel="shortcut icon" href="assets/img/avatars/avatar1.jpeg" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -106,6 +104,7 @@
                 <div class="modal-body">
                     <p>Here you can add new holidays.</p>
                     <form id="add-form" method="post" action="assets/php/addholiday.php">
+                        <input type="text" name="id" value="" hidden>
                         <div class="form-floating mb-3"><input class="form-control" name="name" type="text"><label class="form-label" id="floating-label-2" for="floatinginput">Holiday</label></div>
                         <div class="form-floating mb-3"><input class="form-control" name="date" type="date"><label class="form-label" id="floating-label-2" for="floatinginput">Select Holiday Date</label></div>
                         <button class="btn btn-primary btn-sm w-100" role="button" type="submit" data-bs-dismiss="modal"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Save</button>
@@ -120,9 +119,9 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
     <script src="assets/js/sweetalert2.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/admin-amenities.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/holidays/holidays.js"></script>
 </body>
 
 </html>

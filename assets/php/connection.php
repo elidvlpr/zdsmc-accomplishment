@@ -3,35 +3,13 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-header("Access-Control-Allow-Origin: *");
 
-$host = '192.168.20.101';
-$database   = 'his_zds_mod';
-$user = 'postgres';
-$pass = 'zdsmc-123456';
-
-$dsn = "pgsql:host=$host;dbname=$database";
-
-if (session_status() == PHP_SESSION_NONE) {
-     session_start();
- }
+require_once('ssp.class.php');
 
 $database = 'zdsmc_intranet';
 $username  = 'root';
 $password = '';
 $host = 'localhost';
-
-$options = [
-     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-     PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-     $db_posgres = new PDO($dsn, $user, $pass, $options);
-     
-} catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
 
 $db = new PDO("mysql:host=$host", $username, $password);
 $query = "CREATE DATABASE IF NOT EXISTS $database";
@@ -55,7 +33,7 @@ try {
      $db->exec("CREATE TABLE IF NOT EXISTS `holidays` (
              `id` VARCHAR(20) PRIMARY KEY,
              `name` VARCHAR(20) NOT NULL,
-             `date` da,
+             `date` date NOT NULL
          );
      ");
 
