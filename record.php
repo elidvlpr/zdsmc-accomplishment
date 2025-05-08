@@ -110,42 +110,6 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="update">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Update Assign Duty</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Here you can update the assignment</p>
-                    <form id="update-form" method="post" action="assets/php/update-assign.php">
-                        <input type="hidden" name="id">
-                        <div class="form-floating mb-3"><input class="form-control" name="time-in" type="datetime-local"><label class="form-label" id="floating-label-2" for="floatinginput">TIME IN</label></div>
-                        <div class="form-floating mb-3"><input class="form-control" name="time-out" type="datetime-local"><label class="form-label" id="floating-label-1" for="floatinginput">TIME OUT</label></div>
-                        <button class="btn btn-primary btn-sm w-100" role="button" type="submit" data-bs-dismiss="modal"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Save</button>
-                    </form>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="remove">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Remove Assign Duty</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to remove this duty assign?</p>
-                    <form id="delete-form" method="post" action="assets/php/delete-assign.php">
-                        <input type="hidden" name="id">
-                        <button class="btn btn-danger w-100" type="submit" data-bs-dismiss="modal">REMOVE</button>
-                    </form>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
-            </div>
-        </div>
-    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
