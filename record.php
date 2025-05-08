@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
     <link rel="stylesheet" href="assets/css/Hero-Clean-images.css">
     <link rel="stylesheet" href="assets/css/Navbar-Centered-Links-icons.css">
-    <link rel="shortcut icon" href="assets/img/avatars/avatar1.jpeg" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -78,12 +77,11 @@
                             <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0 table-bordered" id="dataTable">
                                     <thead style="font-family: poppins, sans-serif";>
-                                        <tr>
-                                            <th>EMPLOYEE ID</th>
-                                            <th>FULLNAME</th>
-                                            <th>DEPARTMENT</th>
-                                            <th>CREATED AT</th>
-                                            <th>ACTION</th>
+                                        <tr style="font-family: poppins, sans-serif";>
+                                            <th style="font-family: poppins, sans-serif">EMPLOYEE ID</th>
+                                            <th style="font-family: poppins, sans-serif">FULLNAME</th>
+                                            <th style="font-family: poppins, sans-serif">DEPARTMENT</th>
+                                            <th style="font-family: poppins, sans-serif">ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,7 +91,6 @@
                                             <td><strong>EMPLOYEE ID</strong></td>
                                             <td><strong>FULLNAME</strong></td>
                                             <td><strong>DEPARTMENT</strong></td>
-                                            <td><strong>CREATED AT</strong></td>
                                             <td><strong>ACTION</strong></td>
                                         </tr>
                                     </tfoot>
@@ -114,9 +111,9 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
     <script src="assets/js/sweetalert2.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/admin-amenities.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/record/record.js"></script>
 </body>
 
 </html>

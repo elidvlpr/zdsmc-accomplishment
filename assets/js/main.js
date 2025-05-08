@@ -113,3 +113,83 @@ $(document).ready(function () {
 
 });
 
+function loadDatatable(tableId, api = "") {
+    
+  if ($.fn.DataTable.isDataTable(tableId)) {
+    $(tableId).DataTable().destroy();
+  }
+
+  $(tableId).DataTable({
+    ajax: {
+      url: api,
+      type: "POST",
+    },
+    search: {
+      return: true,
+    },
+    layout: {
+      topStart: {
+        buttons: [
+          {
+            extend: "print",
+            text: "Print All",
+            title: "HR",
+            customize: function (win) {
+              // Add logo and institution information
+              var logoAndInfo =
+                '<div class="row">' +
+                '<div class="col-md-8 col-xl-7 text-center text-primary mx-auto">' +
+                '<h4 class="mt-1"><strong>HR</strong></h4>' +
+                "</div>" +
+                "</div>";
+              $(win.document.body).prepend(logoAndInfo);
+              var table = $(win.document.body).find("table");
+              table.prepend(
+                '<thead><tr><th colspan="15" style="text-align: center; font-size: 10px;"> HR </th></tr><tr><th colspan="15" style="text-align: right;" id="dateTimeHeader"> Date: ' +
+                  new Date().toLocaleString() +
+                  "</th></tr></thead>"
+              );
+              // Style adjustments
+              $(win.document.body)
+                .find("table")
+                .addClass("display")
+                .css("font-size", "9px");
+              $(win.document.body)
+                .find("tr:nth-child(odd) td")
+                .each(function (index) {
+                  $(this).css("background-color", "#D0D0D0");
+                });
+              $(win.document.body).find("h1").css({
+                "text-align": "center",
+                "margin-top": "10px",
+                display: "none",
+              });
+            },
+            exportOptions: {
+              modifier: {
+                selected: null,
+              },
+              columns: ":visible",
+            },
+            footer: false,
+          },
+        ],
+      },
+    },
+    responsive: {
+      details: {
+        display: DataTable.Responsive.display.modal({
+          header: function (row) {
+            var data = row.data();
+            return "Details for " + data[1];
+          },
+        }),
+        renderer: DataTable.Responsive.renderer.tableAll({
+          tableClass: "table table-striped w-100 fs-4",
+        }),
+      },
+    },
+    processing: true,
+    serverSide: true,
+  });
+}
