@@ -1,3 +1,55 @@
+function showSweetAlert(title, text, icon, timer) {
+    let timerInterval;
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      timer: timer,
+      timerProgressBar: true,
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    });
+  }
+
+function submitLoginForm(formId) {
+    console.log(formId);
+    $(formId).submit(function (e) {
+      e.preventDefault();
+      var form = $(this);
+      var url = "assets/php/login.php";
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: form.serialize(),
+        success: function (data) {
+          // console.log(data); 
+          var result = JSON.parse(data);
+          showSweetAlert(
+            result.status.toUpperCase(),
+            result.message,
+            result.status,
+            5000
+          );
+          if (result.status == "success") {
+            setTimeout(function () {
+              window.location.href = "dashboard.php";
+            }, 500);
+      }
+        },
+        error: function (data) {
+          var result = JSON.parse(data);
+          showSweetAlert(
+            result.status.toUpperCase(),
+            result.message,
+            result.status,
+            5000
+          );
+        },
+      });
+    });
+  }
+
 $(document).ready(function () {
   var tableBody = $("#dataTable tbody");
   var tableFooter = $("#dataTable tfoot");
@@ -50,93 +102,14 @@ $(document).ready(function () {
             tableBody.empty();
             if (data.length > 0) {
                 for (let i = 0; i < data.length; i++) {
-                    let row = $("<tr height='30'></tr>");
-
-                    let logDate = new Date(data[i].log_date);
-                    let formattedDate = logDate.toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "numeric",
-                        day: "2-digit",
-                    });
-                    let dayOfWeek = logDate.toLocaleDateString("en-US", {
-                        weekday: "long",
-                    });
-
-                    let isWeekend = dayOfWeek === "Saturday" || dayOfWeek === "Sunday";
-                    let holiday = getHoliday(logDate);
-                    let isHolidayToday = holiday ? true : false;
-                    let holidayName = holiday ? holiday.name : "";
-
-                    let workdetail;
-                    if (!isWeekend) {
-                        workdetail =
-                            "Encoded drugs and medicine in the PhilHealth E-Claims system, transcribed doctor's orders, and processed patient discharge with CF4 generation to XML.";
-                    } else {
-                        workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>${dayOfWeek.toUpperCase()}</span>`;
-                    }
-
-                    if (isHolidayToday) {
-                        workdetail = `<span style='color: rgb(248, 48, 35); font-weight: bold;'>HOLIDAY [ ${holidayName.toUpperCase()} ]</span>`;
-                    }
-
-                    let dateCell = $("<td contenteditable='true' class='text-center fs-6'></td>").text(formattedDate);
-                    let timeCell = $("<td contenteditable='true' class='text-center fs-6'></td>").text("8:00 AM - 5:00 PM");
-                    let workCell = $("<td contenteditable='true' class='text-center fs-6'></td>").html(workdetail);
-                    
-                    let encodedValue = parseInt(data[i].encoded) || 0;
-                    if ([5, 9, 8].includes(encodedValue)) encodedValue = 13;
-                    if (encodedValue == 0) encodedValue = isWeekend || isHolidayToday ? 0 : 13;
-
-                    let qtyCell = $("<td class='text-center fs-6' contenteditable='true'></td>").text(encodedValue);
-
-                    row.append(dateCell, timeCell, workCell, qtyCell);
-                    tableBody.append(row);
-                    totalEncoded += encodedValue;
-
-                    qtyCell.on("input", function () {
-                        let newValue = parseInt($(this).text()) || 0;
-                        if (newValue !== encodedValue) {
-                            totalEncoded = totalEncoded - encodedValue + newValue;
-                            encodedValue = newValue;
-                            updateTotal();
-                        }
-                    });
-
-                    workCell.on("blur", function () {
-                        // Logic to save updated work details can be added here
-                    });
+                    console.log(data[i].log_date);
                 }
-            } else {
-                let noDataRow = $("<tr></tr>");
-                let noDataCell = $("<td colspan='4' class='text-center'></td>").text("No data available.");
-                noDataRow.append(noDataCell);
-                tableBody.append(noDataRow);
             }
         }
     );
 
-    var fullnameRequest = $.post(
-        "assets/php/get-fullname.php",
-        { employee_id: employee_id },
-        function (data) {
-            spanElement.textContent = data[0].h_fullname;
-        }
-    );
-
-    $.when(tableRequest, fullnameRequest).done(function () {
-        tableFooter.empty();
-        let footerRow = $("<tr></tr>");
-        let footerCell = $("<td colspan='3' class='text-right' style='background: rgb(251,220,220); font-weight: bold;'></td>").text("Total Encoded:");
-        let totalCell = $("<td class='text-center' style='background: rgb(251,220,220); font-weight: bold;'></td>").text(totalEncoded);
-        footerRow.append(footerCell, totalCell);
-        tableFooter.append(footerRow);
-
-        myModal.hide();
-    });
-
-    function updateTotal() {
-        tableFooter.find("td:last-child").text(totalEncoded);
-    }
+    
 });
 
 });
+

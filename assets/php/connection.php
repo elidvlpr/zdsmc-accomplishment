@@ -12,21 +12,17 @@ $pass = 'zdsmc-123456';
 
 $dsn = "pgsql:host=$host;dbname=$database";
 
-$chart_date = [
-     'NICU' => '2024-07-15',
-     'ER' => '2024-07-15',
-     'ICU' => '2024-07-15',
-     'PRIVATE' => '2024-07-15',
-     'OB' => '2024-04-15',
-     'PEDIA' => '2024-04-15',
-     'SURGICAL' => '2024-04-15',
-     'MEDICAL' => '2024-04-15',
-     'RECORDS' => '2024-04-15',
-     'PHILHEALTH' => '2024-07-1',
-     'CF4' => '2024-07-1',
-     'DEFAULT' => '2024-04-15'
+if (session_status() == PHP_SESSION_NONE) {
+     session_start();
+ }
 
-];
+$database = 'zdsmc_intranet';
+$username  = 'root';
+$password = '';
+$host = 'localhost';
+
+
+
 
 $options = [
      PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -34,7 +30,36 @@ $options = [
 ];
 
 try {
-     $db = new PDO($dsn, $user, $pass, $options);
+     $db_posgres = new PDO($dsn, $user, $pass, $options);
+     
 } catch (\PDOException $e) {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
+
+$db = new PDO("mysql:host=$host", $username, $password);
+$query = "CREATE DATABASE IF NOT EXISTS $database";
+
+try {
+
+     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+     $db->exec($query);
+     $db->exec("USE $database");
+ 
+     $db->exec("CREATE TABLE IF NOT EXISTS `zdsmc_employees` (
+             `emp_id` VARCHAR(20) PRIMARY KEY,
+             `fullname` VARCHAR(20) NOT NULL,
+             `password` VARCHAR(255),
+             `emp_status` VARCHAR(255) DEFAULT 'ACTIVE' ,
+             `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+             `last_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+         );
+     ");
+     
+     $db->beginTransaction();
+     $db->commit();
+ 
+ } catch (PDOException $e) {
+     die("Error creating database: " . $e->getMessage());
+     $db = null;
+ }
+
